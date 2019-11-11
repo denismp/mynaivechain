@@ -242,7 +242,17 @@ var mineBlock = (blockData) => {
         // );
     }
     return new Block(nextIndex, previousBlock.hash, nextTimestamp, blockData, nextHash, difficulty, nonce);
-}
+};
+
+function testApp() {
+    function showBlockchain(inputBlockchain){
+        for (let i = 0; i < inputBlockchain.length; i++) {
+            console.log(inputBlockchain[i]);
+        }
+        console.log();
+    }
+    showBlockchain(blockchain);
+};
 
 var getLatestBlock = () => blockchain[blockchain.length - 1];
 var queryChainLengthMsg = () => ({ 'type': MessageType.QUERY_LATEST });
@@ -261,3 +271,4 @@ var broadcast = (message) => sockets.forEach(socket => write(socket, message));
 connectToPeers(initialPeers);
 initHttpServer();
 initP2PServer();
+testApp();
